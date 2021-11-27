@@ -25,10 +25,7 @@ int main()
       sort(a.begin(), a.end());
       int m = a[0];
       for (int i = 0; i < n - 1; ++i) {
-        for (int j = i + 1; j < n; ++j) {
-          a[j] = a[j] - a[i];
-        }
-        m = max(m, a[i+1]);
+        m = max(m, a[i + 1] - a[i]);
       }
       cout << m << endl;
     }
