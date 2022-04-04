@@ -1,4 +1,3 @@
-// https://www.spoj.com/problems/ELIS/
 #include <bits/stdc++.h>
 
 #define fastio                      \
@@ -13,19 +12,17 @@ int main() {
   fastio;
   int n;
   cin >> n;
-  vector<int> a(n + 1);
+  vector<int> a(n);
   for (int i = 0; i < n; ++i) {
     cin >> a[i];
   }
-  vector<int> dp(n + 1, 1);
-  int m = 1;
-  for (int i = 1; i < n; ++i) {
-    for (int j = 0; j < i; j++) {
-      if (a[i] > a[j])
-        dp[i] = max(dp[j] + 1, dp[i]);
-    }
-    m = max(dp[i], m);
+  vector<int> dp(n);
+  dp[0] = 0;
+  dp[1] = abs(a[1] - a[0]);
+  for (int i = 2; i < n; i++) {
+    dp[i] = min(abs(a[i] - a[i - 1]) + dp[i - 1], abs(a[i] - a[i - 2]) + dp[i - 2]);
   }
-  cout << m;
+  cout << dp[n - 1];
+
   return 0;
 }
