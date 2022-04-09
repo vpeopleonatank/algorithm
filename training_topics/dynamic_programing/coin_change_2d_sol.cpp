@@ -17,6 +17,22 @@ int main() {
     cin >> c[i];
   }
   long long f[m + 1][n + 1];
+  f[0][0] = 1;
+  for (int i = 1; i <= n; ++i) {
+    f[0][i] = 0;
+  }
+  for (int i = 1; i <= m; ++i) {
+    f[i][0] = 1;
+  }
+  for (int i = 1; i <= m; i++) {
+    for (int j = 1; j <= n; j++) {
+      f[i][j] = f[i - 1][j];
+      if (c[i - 1] <= j) {
+        f[i][j] += f[i][j - c[i - 1]];
+      }
+    }
+  }
+  cout << f[m][n];
 
   return 0;
 }
