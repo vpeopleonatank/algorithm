@@ -3,3 +3,5 @@
 *.out*
 *.ans*
 *bin*
+
+contests/onlinejudge/.gdb_history
